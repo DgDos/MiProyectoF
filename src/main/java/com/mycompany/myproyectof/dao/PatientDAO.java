@@ -5,6 +5,7 @@
  */
 package com.mycompany.myproyectof.dao;
 
+import com.mycompany.myproyectof.model.Mongo;
 import com.mycompany.myproyectof.model.Patient;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,6 +45,8 @@ public class PatientDAO {
     }
     
     public static List<Patient> getAllPatients(){
+        Mongo m=new Mongo();
+        m.listar();
         Collection<Patient> c= patMap.values();
         List<Patient> list=new ArrayList<Patient>();
         list.addAll(c);

@@ -118,6 +118,11 @@ public class Patient {
     public void setIns_number(String ins_number) {
         this.ins_number = ins_number;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" + "patNo=" + patNo + ", name=" + name + ", address=" + address + ", telephone=" + telephone + ", date_of_birth=" + date_of_birth + ", emergency_contact=" + emergency_contact + ", type_of_patient=" + type_of_patient + ", medicare=" + medicare + ", ins_company=" + ins_company + ", ins_number=" + ins_number + '}';
+    }
     
     
 }
