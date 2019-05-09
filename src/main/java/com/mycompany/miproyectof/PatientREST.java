@@ -32,8 +32,8 @@ public class PatientREST {
     @GET
     @Path("/{patNo}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Patient getEmployee(@PathParam("patNo") String patNo) {
-        return PatientDAO.getPatient(patNo);
+    public Patient getEmployee(@PathParam("patNo") String patNo) throws UnknownHostException {
+        return Mongo.showOne(patNo);
     }
  
     // URI:

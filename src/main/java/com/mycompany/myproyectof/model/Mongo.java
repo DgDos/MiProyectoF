@@ -89,5 +89,33 @@ public class Mongo {
         return list;
         
     }
+    
+    public static Patient showOne(String valor) throws UnknownHostException {
+        MongoClient mongoClient = new MongoClient(HOST, PORT);
+        
+           Map<String, Patient> empMap = new HashMap<String, Patient>();
+            MongoDatabase database = mongoClient.getDatabase("sampledb");
+
+           MongoCollection<Document> collection = database.getCollection("patient");
+
+           MongoCursor<Document> cursor = collection.find().projection(Projections.excludeId()).iterator();
+         
+
+        try {
+            while (cursor.hasNext()) {
+                Document doc = cursor.next();
+                Gson gson = new Gson();
+                Patient c = gson.fromJson(doc.toJson(), Patient.class);
+                empMap.put(c.getPatNo(),c);
+            }
+
+        } finally {
+            cursor.close();
+        }
+        
+        Patient c = empMap.get(valor);
+        return c;
+        
+    }
 
 }
